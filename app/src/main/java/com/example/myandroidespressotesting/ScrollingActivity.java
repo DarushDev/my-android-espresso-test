@@ -4,12 +4,34 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class ScrollingActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    String[] coffeNames = {
+            "Cafe au lait",
+            "Caffe latte",
+            "Ca phe sura da",
+            "Flat white",
+            "Cafe Americano",
+            "Cafe Bombon",
+            "Cafe Normal"
+    };
+    int[] coffeImages = {
+            R.drawable.caffe_au_lait,
+            R.drawable.caffe_latte,
+            R.drawable.caffe_idontknow,
+            R.drawable.flat_white,
+            R.drawable.coffee,
+            R.drawable.cafe_bombon,
+            R.drawable.mug_coffee
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +48,12 @@ public class ScrollingActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, coffeNames, coffeImages);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
