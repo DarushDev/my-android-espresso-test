@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
@@ -24,5 +25,10 @@ public class CoffeeListActivityTest {
     @Test
     public void testMapFloatingActionButton_shouldBeDisplayed() {
         onView(withId(R.id.fab)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testToolbarImageView_shouldHaveContentDescription(){
+        onView(withId(R.id.toolbar_image)).check(matches(withContentDescription(R.string.content_for_mug)));
     }
 }
