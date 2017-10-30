@@ -10,6 +10,8 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.assertion.LayoutAssertions.noEllipsizedText;
+import static android.support.test.espresso.assertion.LayoutAssertions.noOverlaps;
 import static android.support.test.espresso.assertion.PositionAssertions.isAbove;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -54,4 +56,15 @@ public class SingleCoffeeActivityTest {
         onView(withId(R.id.imageViewCoffee)).check(matches(isDisplayed()));
     }
 
+    // check if textview's text is not cut off (ellipsized)
+    @Test
+    public void testDescription_shouldNotContainEllipsizedText() {
+        onView(withId(R.id.textViewCoffee)).check(noEllipsizedText());
+    }
+
+    // check if there are any overlapped views
+    @Test
+    public void testSingleCoffeeActivity_shouldNotHaveAnyOverlaps() {
+        onView(withId(R.id.activity_single_coffee_layout)).check(noOverlaps());
+    }
 }
