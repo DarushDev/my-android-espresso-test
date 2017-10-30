@@ -11,6 +11,8 @@ import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.PositionAssertions.isAbove;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.example.myandroidespressotesting.R.drawable.coffee;
 import static org.junit.Assert.*;
@@ -47,6 +49,9 @@ public class SingleCoffeeActivityTest {
         onView(withId(R.id.imageViewCoffee)).check(isAbove(withId(R.id.textViewCoffee)));
     }
 
-
+    @Test
+    public void testImage_shouldBeDisplayed() {
+        onView(withId(R.id.imageViewCoffee)).check(matches(isDisplayed()));
+    }
 
 }
