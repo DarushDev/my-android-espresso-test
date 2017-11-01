@@ -12,10 +12,6 @@ import android.widget.TextView;
 import static com.example.myandroidespressotesting.MyRecyclerViewAdapter.EXTRA_COFFEE_IMAGE;
 import static com.example.myandroidespressotesting.MyRecyclerViewAdapter.EXTRA_COFFEE_NAME;
 
-/**
- * Created by Lenovo Desktop on 10/30/2017.
- */
-
 public class SingleCoffeeActivity extends AppCompatActivity {
 
     TextView textViewCoffee;
