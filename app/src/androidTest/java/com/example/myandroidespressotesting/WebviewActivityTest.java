@@ -14,6 +14,7 @@ import static android.support.test.espresso.web.assertion.WebViewAssertions.webM
 import static android.support.test.espresso.web.sugar.Web.onWebView;
 import static android.support.test.espresso.web.webdriver.DriverAtoms.findElement;
 import static android.support.test.espresso.web.webdriver.DriverAtoms.getText;
+import static android.support.test.espresso.web.webdriver.DriverAtoms.webClick;
 import static org.hamcrest.Matchers.containsString;
 
 public class WebviewActivityTest {
@@ -26,7 +27,7 @@ public class WebviewActivityTest {
                     .getInstrumentation()
                     .getTargetContext();
             Intent result = new Intent(targetContext, WebviewActivity.class);
-            result.putExtra("url",  "https://httpbin.org/");
+            result.putExtra("url",  "https://www.example.com/");
             return result;
         }
 
@@ -37,15 +38,24 @@ public class WebviewActivityTest {
         }
     };
 
+    //use the url https://httpbin.org/ for this test
     @Test
     public void testClickWebsiteButton_OpensWebviewUrl() {
-
         // Finds the html tag with id BONUSPOINTS and checks if it contains the text "BONUSPOINTS"
         onWebView()
                 .withElement(findElement(Locator.ID, "BONUSPOINTS"))
                 .check(webMatches(getText(), containsString("BONUSPOINTS")));
     }
 
+    // click on the tag a
+    @Test
+    public void testClickWebsiteButton_shouldClickOnTheWebpage() {
+        onWebView().withElement(findElement(Locator.TAG_NAME, "a")).perform(webClick());
+
+        // reload the page
+        onWebView().reset();
+
+    }
 
 
 }
