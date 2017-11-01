@@ -26,4 +26,12 @@
         android:text="TextView"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+    <Button
+        android:text="Website"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textViewCoffee"
+        android:id="@+id/buttonWebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
